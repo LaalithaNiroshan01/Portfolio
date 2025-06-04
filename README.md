@@ -25,15 +25,42 @@
 - ⚡ Fast loading and optimized performance
 - 🌐 Cross-browser compatibility
 
+## 🚀 Featured Projects
+
+| Project | Description | Tech Stack |
+|---------|-------------|------------|
+| 📱 After Sales Service App | CRM & complaint tracker for George Stuart Ltd | Flutter + Firebase |
+| 🌐 Volunteer Web Platform | Event site for volunteers | HTML, CSS, JS, PHP, SQL |
+| 📊 Tuition Class Manager | Student + payment system | Flutter + Firebase |
+| 📚 Chapter One Bookstore | Online bookstore | MERN Stack |
+| 🚆 Real-Time Railway Tracker | Live train UI | Figma |
+| 🚗 Veloce Motors | Car dealership UX | Figma |
+| 🐶 Pet Care Platform | Pet health record system | HTML, CSS, JS |
+
 ## 🛠️ Tech Stack
 
-- ⚛️ React with TypeScript
-- 🎨 TailwindCSS for styling
-- 🎭 Framer Motion for animations
-- 🖼️ React Icons for icon components
-- ⚡ Vite for build tooling
-- 📝 ESLint and Prettier for code quality
-- 🎯 PostCSS for CSS processing
+- ⚛️ **Frontend**: React, TypeScript, TailwindCSS, Flutter
+- 🎨 **Design**: Figma, UI/UX Design
+- 🔥 **Backend**: Firebase, Node.js, Express.js
+- 🗄️ **Database**: MongoDB, SQL
+- 🛠️ **Tools**: Git, VS Code, Android Studio
+- 📱 **Mobile**: Flutter, Android Development
+- 🎭 **Animation**: Framer Motion
+- 🎯 **Testing**: Selenium WebDriver
+
+## 📚 Certifications
+
+- 🐍 Python for Beginners – DP Education
+- 📱 Android Studio – Simplilearn
+- 🎨 UI/UX for Beginners – Great Learning
+- 📊 Machine Learning using Python – Great Learning
+- 💽 Database Management – Great Learning
+
+## 🧠 Roles & Leadership
+
+- 🖊️ Editor – TechStrike Club, CINEC (2024–Present)
+- 🎨 Head of Graphic Design – TechStrike Club (2023–2024)
+- 🙌 Volunteer – CINEC Expo 2023
 
 ## 📁 Project Structure
 
@@ -73,7 +100,7 @@ Before you begin, ensure you have the following installed:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/portfolio.git
+   git clone https://github.com/LaalithaNiroshan01/portfolio.git
    cd portfolio
    ```
 
@@ -158,16 +185,23 @@ MIT License - feel free to use this template for your own portfolio! 🎉
 
 ## 👩‍💻 Created By
 
-**Laalitha Niroshan** - UI/UX Designer & Software Engineering Undergraduate
+**Laalitha Niroshan** - Software Engineering Undergraduate @ CINEC Campus, Sri Lanka
+- 💡 UI/UX Designer
+- 💻 Web & Mobile Developer
+- 🌟 Futurist Dev
+- 📍 Malabe, Sri Lanka
+- 🎓 Graduation: 2026
+- 🎯 Focus: React, Flutter, Firebase, Figma
 
 ## 📬 Contact
 
 <div align="center">
 
-[![Portfolio](https://img.shields.io/badge/Portfolio-000000?style=for-the-badge&logo=About.me&logoColor=white)](Your Portfolio URL)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](Your LinkedIn Profile)
-[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](Your GitHub Profile)
-[![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:your.email@example.com)
+[![Portfolio](https://img.shields.io/badge/Portfolio-000000?style=for-the-badge&logo=About.me&logoColor=white)](https://laalithaniroshan.vercel.app/)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/laalitha-gunarathna-6a015b289/)
+[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/LaalithaNiroshan01)
+[![Facebook](https://img.shields.io/badge/Facebook-1877F2?style=for-the-badge&logo=facebook&logoColor=white)](https://facebook.com/laalithaniroshan2)
+[![Instagram](https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://instagram.com/__nir0__)
 
 </div>
 
