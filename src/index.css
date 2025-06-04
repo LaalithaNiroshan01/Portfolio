@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Merriweather:wght@400;700&display=swap');
+
+@layer base {
+body {
+    @apply transition-all duration-300 ease-in-out;
+  }
+  
+  body.dark {
+    @apply bg-darkBg text-darkText;
+  }
+  
+  body.light {
+    @apply bg-lightBg text-lightText;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply backdrop-blur-xl bg-opacity-20 border border-gray-200 dark:border-pureBlack rounded-xl;
+  }
+  
+  .btn-primary {
+    @apply px-6 py-3 text-white rounded-full transition-all duration-300;
+    background: linear-gradient(135deg, #ff0000, #800000);
+    box-shadow: 0 4px 10px rgba(255, 0, 0, 0.3);
+  }
+  
+  .btn-primary:hover {
+    background: linear-gradient(135deg, #ff3333, #990000);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(255, 0, 0, 0.4);
+  }
+  
+  .btn-secondary {
+    @apply px-6 py-3 bg-secondary text-white rounded-full hover:bg-opacity-90 transition-all duration-300;
+  }
+  
+  .section-title {
+    @apply text-3xl md:text-4xl font-bold mb-8 text-secondary dark:text-white;
+  }
+  
+  .skill-bar {
+    @apply h-2 bg-gray-200 dark:bg-pureBlack rounded-full overflow-hidden;
+}
+
+  .skill-progress {
+    @apply h-full bg-primary rounded-full;
+  }
+  
+  /* Red to maroon gradient elements */
+  .red-maroon-gradient {
+    background: linear-gradient(135deg, #ff0000, #800000);
+  }
+  
+  .red-maroon-hover:hover {
+    background: linear-gradient(135deg, #ff3333, #990000);
+  }
+  
+  /* Tags and highlights */
+  .gradient-text {
+    background: linear-gradient(135deg, #ff0000, #800000);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100 dark:bg-pureBlack;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #ff0000, #800000);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #ff3333, #990000);
+}
