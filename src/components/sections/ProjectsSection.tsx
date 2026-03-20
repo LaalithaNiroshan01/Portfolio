@@ -114,7 +114,7 @@ const ProjectsSection: React.FC = () => {
     },
     {
       id: 'project10',
-      title: 'The Book Haven',
+      title: 'Chapter One - Online Bookstore',
       description: 'Online bookstore with integrated user management and ordering system.',
       category: 'software',
       image: project10,
