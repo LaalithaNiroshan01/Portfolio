@@ -191,7 +191,7 @@ const HeroSection: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
             >
-              UI/UX Designer | Creative Innovator
+              Junior Software Engineer | UI/UX Designer | Creative Innovator
             </motion.p>
             
             <motion.div 
