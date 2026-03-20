@@ -15,6 +15,7 @@ import project7 from '../../images/project7.png';
 import project8 from '../../images/project8.png';
 import project9 from '../../images/project9.png';
 import project10 from '../../images/project10.png';
+import project11 from '../../images/project11.png';
 
 type ProjectCategory = 'all' | 'uiux' | 'software';
 
@@ -86,6 +87,14 @@ const ProjectsSection: React.FC = () => {
       category: 'uiux',
       image: project9,
       link: 'https://www.figma.com/design/mrv138OexGzgvAiqONjKpM/BookNest?node-id=0-1&p=f&t=xms5qH9ffsde2Ehq-0'
+    },
+    {
+      id: 'project11',
+      title: 'EMS - Event Management System',
+      description: 'Event Management System with user-friendly interface.',
+      category: 'uiux',
+      image: project11,
+      link: 'https://www.figma.com/design/fIQfJSrQf1p9u5nupePRIZ/Event-Management-Web?node-id=26-449&t=THFZ5RnEj7ZdKi76-1'
     },
     {
       id: 'project6',
