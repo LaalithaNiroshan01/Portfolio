@@ -16,6 +16,7 @@ import project8 from '../../images/project8.png';
 import project9 from '../../images/project9.png';
 import project10 from '../../images/project10.png';
 import project11 from '../../images/project11.png';
+import project12 from '../../images/project12.png';
 
 type ProjectCategory = 'all' | 'uiux' | 'software';
 
@@ -95,6 +96,14 @@ const ProjectsSection: React.FC = () => {
       category: 'uiux',
       image: project11,
       link: 'https://www.figma.com/design/fIQfJSrQf1p9u5nupePRIZ/Event-Management-Web?node-id=26-449&t=THFZ5RnEj7ZdKi76-1'
+    },
+    {
+      id: 'project12',
+      title: 'Corporate Website - AK Textiles (Pvt) Ltd',
+      description: 'UI/UX design for a Textiles company.',
+      category: 'uiux',
+      image: project12,
+      link: 'https://www.figma.com/design/BxHkgKL8UN7GHMrrx9VeAf/AK-Textiles--Pvt--Ltd?node-id=0-1&t=GkeeYo6Z3xoIfXFh-1'
     },
     {
       id: 'project6',
