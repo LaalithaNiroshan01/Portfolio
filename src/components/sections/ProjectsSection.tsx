@@ -100,7 +100,7 @@ const ProjectsSection: React.FC = () => {
     {
       id: 'project12',
       title: 'Corporate Website - AK Textiles (Pvt) Ltd',
-      description: 'UI/UX design for a Textiles company.',
+      description: 'UI/UX design for a Textiles company. https://aktextiles.lk/',
       category: 'uiux',
       image: project12,
       link: 'https://www.figma.com/design/BxHkgKL8UN7GHMrrx9VeAf/AK-Textiles--Pvt--Ltd?node-id=0-1&t=GkeeYo6Z3xoIfXFh-1'
