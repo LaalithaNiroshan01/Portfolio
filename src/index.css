@@ -27,12 +27,23 @@ body {
     @apply px-6 py-3 text-white rounded-full transition-all duration-300;
     background: linear-gradient(135deg, #ff0000, #800000);
     box-shadow: 0 4px 10px rgba(255, 0, 0, 0.3);
+    transition: transform 220ms ease, box-shadow 220ms ease, background 220ms ease;
   }
   
   .btn-primary:hover {
     background: linear-gradient(135deg, #ff3333, #990000);
-    transform: translateY(-2px);
     box-shadow: 0 6px 12px rgba(255, 0, 0, 0.4);
+  }
+
+  .btn-primary:hover,
+  .btn-secondary:hover {
+    transform: translateY(-2px);
+  }
+
+  .btn-primary:active,
+  .btn-secondary:active,
+  .interactive-button:active {
+    transform: scale(0.98);
   }
   
   .btn-secondary {
@@ -68,6 +79,119 @@ body {
     background-clip: text;
     color: transparent;
   }
+}
+
+[data-motion-tier='full'] .interactive-card {
+  transition: box-shadow 260ms ease, border-color 260ms ease, transform 260ms ease;
+}
+
+[data-motion-tier='balanced'] .interactive-card {
+  transition: box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.interactive-card:hover {
+  border-color: rgba(255, 0, 0, 0.3);
+  box-shadow: 0 16px 36px rgba(17, 24, 39, 0.12);
+}
+
+.interactive-card-icon,
+.project-image,
+.design-image {
+  transition: transform 280ms ease;
+}
+
+.interactive-card:hover .interactive-card-icon {
+  transform: scale(1.06);
+}
+
+.interactive-tool:hover .interactive-card-icon {
+  transform: translateY(-3px);
+}
+
+.interactive-card:hover .project-image {
+  transform: scale(1.045);
+}
+
+.interactive-card:hover .design-image {
+  transform: scale(1.035);
+}
+
+.interactive-button {
+  transition: transform 180ms ease, background-color 180ms ease, color 180ms ease;
+}
+
+.animated-link svg {
+  transition: transform 180ms ease;
+}
+
+.animated-link:hover svg {
+  transform: translateX(3px);
+}
+
+.nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  position: absolute;
+  right: 0;
+  bottom: -5px;
+  left: 0;
+  height: 2px;
+  content: '';
+  background: linear-gradient(135deg, #ff0000, #800000);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 220ms ease;
+}
+
+.nav-link:hover::after,
+.nav-link:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.pdf-book-stage {
+  perspective: 1800px;
+}
+
+.document-book-page {
+  transform-origin: left center;
+  backface-visibility: hidden;
+  box-shadow: 0 24px 70px rgba(15, 23, 42, 0.18);
+}
+
+.viewer-control-button {
+  @apply flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-gray-300 text-secondary transition-colors hover:border-primary hover:text-primary disabled:cursor-not-allowed disabled:opacity-40 dark:border-gray-700 dark:text-white;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+[data-motion-tier='minimal'] *,
+[data-motion-tier='minimal'] *::before,
+[data-motion-tier='minimal'] *::after {
+  scroll-behavior: auto !important;
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.12s !important;
+}
+
+[data-motion-tier='minimal'] .interactive-card:hover,
+[data-motion-tier='minimal'] .interactive-card:hover .interactive-card-icon,
+[data-motion-tier='minimal'] .interactive-card:hover .project-image,
+[data-motion-tier='minimal'] .interactive-card:hover .design-image,
+[data-motion-tier='minimal'] .btn-primary:hover,
+[data-motion-tier='minimal'] .btn-secondary:hover,
+[data-motion-tier='minimal'] .interactive-button:active {
+  transform: none !important;
 }
 
 /* Custom Scrollbar */

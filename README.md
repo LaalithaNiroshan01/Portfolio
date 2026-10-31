@@ -20,6 +20,12 @@
 - 🌓 Dark/light theme mode
 - 📱 Responsive design for all screen sizes
 - ✨ Animated sections using Framer Motion
+- 🖼️ Graduation confirmation image viewer with full-screen and zoom controls
+- 📄 Custom CIRS research PDF viewer with full-screen and zoom controls
+- 📖 Animated page navigation for the CIRS 2026 publication
+- 🧭 Direct link to the Chrome Web Store extension
+
+> Viewers hide download controls and discourage context-menu saving. Public images and the CIRS PDF still need to reach a visitor's browser to be displayed, so a static portfolio cannot technically prevent a determined visitor from saving them.
 - 📊 Interactive skill bars and project filtering
 - 🔍 SEO optimized
 - ⚡ Fast loading and optimized performance
@@ -83,9 +89,12 @@ portfolio/
 
 1. 🎯 **Hero Section** - Introduction with animated text and a profile image
 2. 👤 **About Section** - Information about the developer and the services offered
-3. 💪 **Skills Section** - Skills with percentage bars and tool icons
-4. 🚀 **Projects Section** - Filterable portfolio projects with links
-5. 📬 **Contact Section** - Contact form and contact information
+3. 🎓 **Graduation Confirmation** - In-page, view-only confirmation document viewer
+4. 📚 **Research & Publications** - CIRS 2026 paper viewer and Chrome Web Store link
+5. 💪 **Skills Section** - Skills with percentage bars and tool icons
+6. 🚀 **Projects Section** - Filterable portfolio projects with links
+7. 🎨 **Designs Section** - Selected visual work
+8. 📬 **Contact Section** - Contact form and contact information
 
 ## ⚙️ Prerequisites
 
@@ -185,7 +194,7 @@ MIT License - feel free to use this template for your own portfolio! 🎉
 
 ## 👩‍💻 Created By
 
-**Laalitha Niroshan** - Software Engineering Undergraduate @ CINEC Campus, Sri Lanka
+**Laalitha Niroshan** - Software Engineering Graduate @ CINEC Campus, Sri Lanka
 - 💡 UI/UX Designer
 - 💻 Web & Mobile Developer
 - 🌟 Futurist Dev

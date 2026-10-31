@@ -17,6 +17,8 @@ declare module 'react-icons/fi' {
   export const FiCode: IconType;
   export const FiPenTool: IconType;
   export const FiSend: IconType;
+  export const FiArrowUp: IconType;
+  export const FiMessageCircle: IconType;
 }
 
 declare module 'react-icons/si' {
@@ -46,6 +48,7 @@ declare module 'react-icons/di' {
 
 declare module 'react-icons/fa' {
   export const FaAndroid: IconType;
+  export const FaWhatsapp: IconType;
 }
 
 declare module 'react-icons/vsc' {

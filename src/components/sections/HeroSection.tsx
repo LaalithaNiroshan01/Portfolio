@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiDownload } from 'react-icons/fi';
 import { Icon } from '../../utils/IconWrapper';
+import { useMotionPreferences } from '../../context/MotionPreferencesContext';
 
 // Import profile images
 import profileImage1 from '../../images/DP1.png';
@@ -11,28 +12,31 @@ import cvPdf from '../../assets/Laalitha_Niroshan.pdf';
 
 const HeroSection: React.FC = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const { tier, shouldReduceMotion } = useMotionPreferences();
+  const motionDuration = tier === 'full' ? 0.5 : tier === 'balanced' ? 0.3 : 0.12;
   const profileImages = [profileImage1, profileImage2];
 
-  // Change profile image every 5 seconds
   useEffect(() => {
+    if (shouldReduceMotion) return;
+
     const interval = setInterval(() => {
       setCurrentImageIndex((prevIndex) => (prevIndex === 0 ? 1 : 0));
-    }, 5000);
+    }, tier === 'full' ? 5000 : 8000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [shouldReduceMotion, tier]);
 
   return (
     <section id="home" className="min-h-screen flex items-center relative overflow-hidden">
       {/* Animated Background Elements */}
       <motion.div 
         className="absolute -top-20 -left-20 w-96 h-96 bg-primary rounded-full filter blur-3xl opacity-10 dark:opacity-5"
-        animate={{
+        animate={tier === 'full' ? {
           scale: [1, 1.2, 1],
           opacity: [0.1, 0.15, 0.1],
-        }}
+        } : tier === 'balanced' ? { opacity: [0.08, 0.12, 0.08] } : undefined}
         transition={{
-          duration: 8,
+          duration: tier === 'full' ? 12 : 18,
           repeat: Infinity,
           ease: "easeInOut"
         }}
@@ -40,12 +44,12 @@ const HeroSection: React.FC = () => {
       
       <motion.div 
         className="absolute -bottom-40 -right-20 w-96 h-96 bg-primary rounded-full filter blur-3xl opacity-10 dark:opacity-5"
-        animate={{
+        animate={tier === 'full' ? {
           scale: [1, 1.1, 1],
           opacity: [0.1, 0.2, 0.1],
-        }}
+        } : tier === 'balanced' ? { opacity: [0.08, 0.12, 0.08] } : undefined}
         transition={{
-          duration: 10,
+          duration: tier === 'full' ? 14 : 20,
           repeat: Infinity,
           ease: "easeInOut",
           delay: 1
@@ -55,11 +59,11 @@ const HeroSection: React.FC = () => {
       {/* Additional floating elements */}
       <motion.div 
         className="absolute top-1/4 right-1/4 w-32 h-32 bg-blue-500 rounded-full filter blur-3xl opacity-5 dark:opacity-3"
-        animate={{
+        animate={tier === 'full' ? {
           y: [0, -30, 0],
           x: [0, 15, 0],
           opacity: [0.05, 0.08, 0.05]
-        }}
+        } : undefined}
         transition={{
           duration: 12,
           repeat: Infinity,
@@ -69,11 +73,11 @@ const HeroSection: React.FC = () => {
       
       <motion.div 
         className="absolute bottom-1/3 left-1/3 w-48 h-48 bg-purple-500 rounded-full filter blur-3xl opacity-5 dark:opacity-3"
-        animate={{
+        animate={tier === 'full' ? {
           y: [0, 40, 0],
           x: [0, -20, 0],
           opacity: [0.05, 0.1, 0.05]
-        }}
+        } : undefined}
         transition={{
           duration: 15,
           repeat: Infinity,
@@ -82,7 +86,7 @@ const HeroSection: React.FC = () => {
       ></motion.div>
       
       {/* Small floating particles */}
-      {[...Array(5)].map((_, index) => {
+      {(tier === 'full' ? [...Array(5)] : []).map((_, index) => {
         const colors = ['#E63946', '#4361EE', '#7209B7', '#4F46E5', '#EC4899'];
         return (
           <motion.div
@@ -113,16 +117,16 @@ const HeroSection: React.FC = () => {
           {/* Profile Image - Now on the left side */}
           <motion.div 
             className="hidden lg:block"
-            initial={{ opacity: 0, scale: 0.8 }}
+            initial={{ opacity: 0, scale: tier === 'full' ? 0.8 : 1 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: motionDuration + 0.2 }}
           >
             <div className="relative w-full aspect-square max-w-md mx-auto">
               <motion.div 
                 className="absolute inset-0 bg-primary rounded-full opacity-10"
-                animate={{
+                animate={tier === 'full' ? {
                   scale: [1, 1.05, 1],
-                }}
+                } : undefined}
                 transition={{
                   duration: 4,
                   repeat: Infinity,
@@ -136,7 +140,7 @@ const HeroSection: React.FC = () => {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    transition={{ duration: 1 }}
+                    transition={{ duration: motionDuration + 0.25 }}
                     className="w-full h-full"
                   >
                     <img 
@@ -156,7 +160,7 @@ const HeroSection: React.FC = () => {
               className="text-lg md:text-xl text-primary font-semibold mb-2"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: motionDuration }}
             >
               Hello, I'm
             </motion.h2>
@@ -165,7 +169,7 @@ const HeroSection: React.FC = () => {
               className="text-4xl md:text-6xl font-bold mb-4 text-secondary dark:text-white"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
+              transition={{ duration: motionDuration, delay: tier === 'full' ? 0.1 : 0 }}
             >
               Laalitha Niroshan
             </motion.h1>
@@ -174,14 +178,14 @@ const HeroSection: React.FC = () => {
               className="text-xl md:text-2xl font-semibold mb-6 text-gray-600 dark:text-gray-300"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
+              transition={{ duration: motionDuration, delay: tier === 'full' ? 0.2 : 0 }}
             >
-              <span>Software Engineering Undergraduate</span>
+              <span>Software Engineering Graduate</span>
               <motion.div 
                 className="h-0.5 w-24 bg-primary mt-2"
                 initial={{ width: 0 }}
                 animate={{ width: 96 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
+                transition={{ duration: motionDuration + 0.2, delay: tier === 'full' ? 0.4 : 0 }}
               ></motion.div>
             </motion.div>
             
@@ -189,7 +193,7 @@ const HeroSection: React.FC = () => {
               className="text-lg text-gray-600 dark:text-gray-300 mb-8 max-w-lg"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
+              transition={{ duration: motionDuration, delay: tier === 'full' ? 0.3 : 0 }}
             >
               Junior Software Engineer | UI/UX Designer | Creative Innovator
             </motion.p>
@@ -198,14 +202,14 @@ const HeroSection: React.FC = () => {
               className="flex flex-wrap gap-4"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.4 }}
+              transition={{ duration: motionDuration, delay: tier === 'full' ? 0.4 : 0 }}
             >
               <motion.a 
                 href={cvPdf} 
                 download="Laalitha_Niroshan.pdf"
                 className="btn-primary flex items-center"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={tier === 'minimal' ? undefined : { y: -2 }}
+                whileTap={tier === 'minimal' ? undefined : { scale: 0.98 }}
               >
                 <Icon icon={FiDownload} className="mr-2" /> Download CV
               </motion.a>
@@ -213,8 +217,8 @@ const HeroSection: React.FC = () => {
               <motion.a 
                 href="#contact" 
                 className="btn-secondary flex items-center"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={tier === 'minimal' ? undefined : { y: -2 }}
+                whileTap={tier === 'minimal' ? undefined : { scale: 0.98 }}
               >
                 Contact Me
               </motion.a>

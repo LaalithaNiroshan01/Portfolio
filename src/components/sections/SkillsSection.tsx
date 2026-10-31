@@ -11,8 +11,12 @@ import { VscCode } from 'react-icons/vsc';
 import { FaAndroid, FaTerminal } from 'react-icons/fa';
 import { Icon } from '../../utils/IconWrapper';
 import SkillBar from '../ui/SkillBar';
+import { useMotionPreferences } from '../../context/MotionPreferencesContext';
+import { getRevealMotionProps } from '../../utils/motionPresets';
 
 const SkillsSection: React.FC = () => {
+  const { tier } = useMotionPreferences();
+  const revealProps = getRevealMotionProps(tier);
   const programmingSkills = [
     { name: 'HTML', percentage: 90, icon: <Icon icon={SiHtml5} className="text-orange-500" /> },
     { name: 'CSS', percentage: 85, icon: <Icon icon={SiCss3} className="text-blue-500" /> },
@@ -67,10 +71,7 @@ const SkillsSection: React.FC = () => {
       <div className="container mx-auto px-4">
         <motion.div 
           className="text-center mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          {...revealProps}
         >
           <h2 className="section-title">My Skills</h2>
           <div className="h-1 w-24 red-maroon-gradient mx-auto mb-8"></div>
@@ -82,7 +83,10 @@ const SkillsSection: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
           {/* Programming Skills */}
           <motion.div
-            variants={containerVariants}
+            variants={tier === 'minimal' ? {
+              hidden: { opacity: 0 },
+              visible: { opacity: 1 }
+            } : containerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
@@ -108,13 +112,13 @@ const SkillsSection: React.FC = () => {
                 {designTools.map((tool, index) => (
                   <motion.div 
                     key={index}
-                    className="flex flex-col items-center"
+                    className="interactive-tool flex flex-col items-center"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 }}
+                    transition={{ delay: tier === 'full' ? index * 0.1 : 0, duration: tier === 'minimal' ? 0.12 : 0.3 }}
                   >
-                    <div className="w-16 h-16 rounded-lg bg-gray-100 dark:bg-pureBlack flex items-center justify-center text-2xl mb-2">
+                    <div className="interactive-card-icon w-16 h-16 rounded-lg bg-gray-100 dark:bg-pureBlack flex items-center justify-center text-2xl mb-2">
                       {tool.icon}
                     </div>
                     <span className="text-sm text-gray-600 dark:text-gray-300">{tool.name}</span>
@@ -134,13 +138,13 @@ const SkillsSection: React.FC = () => {
                 {idesTools.map((tool, index) => (
                   <motion.div 
                     key={index}
-                    className="flex flex-col items-center"
+                    className="interactive-tool flex flex-col items-center"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 }}
+                    transition={{ delay: tier === 'full' ? index * 0.1 : 0, duration: tier === 'minimal' ? 0.12 : 0.3 }}
                   >
-                    <div className="w-16 h-16 rounded-lg bg-gray-100 dark:bg-pureBlack flex items-center justify-center text-2xl mb-2">
+                    <div className="interactive-card-icon w-16 h-16 rounded-lg bg-gray-100 dark:bg-pureBlack flex items-center justify-center text-2xl mb-2">
                       {tool.icon}
                     </div>
                     <span className="text-sm text-gray-600 dark:text-gray-300">{tool.name}</span>

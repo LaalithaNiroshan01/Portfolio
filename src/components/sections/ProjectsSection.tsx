@@ -3,6 +3,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FiExternalLink } from 'react-icons/fi';
 import GlassCard from '../ui/GlassCard';
 import { Icon } from '../../utils/IconWrapper';
+import { useMotionPreferences } from '../../context/MotionPreferencesContext';
+import { getRevealMotionProps } from '../../utils/motionPresets';
 
 // Import project images
 import project1 from '../../images/project1.png';
@@ -31,6 +33,8 @@ interface Project {
 
 const ProjectsSection: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<ProjectCategory>('all');
+  const { tier } = useMotionPreferences();
+  const revealProps = getRevealMotionProps(tier);
 
   const projects: Project[] = [
     {
@@ -111,7 +115,7 @@ const ProjectsSection: React.FC = () => {
       description: 'A website for volunteer management and organization.',
       category: 'software',
       image: project6,
-      link: 'https://github.com/LaalithaNiroshan01/Train-Tracking-App'
+      link: 'https://github.com/LaalithaNiroshan01/Volunteer-Web-Application/tree/main/Volunteer'
     },
     {
       id: 'project7',
@@ -164,10 +168,7 @@ const ProjectsSection: React.FC = () => {
       <div className="container mx-auto px-4">
         <motion.div 
           className="text-center mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          {...revealProps}
         >
           <h2 className="section-title">My Projects</h2>
           <div className="h-1 w-24 red-maroon-gradient mx-auto mb-8"></div>
@@ -179,14 +180,12 @@ const ProjectsSection: React.FC = () => {
             {categories.map(category => (
               <motion.button
                 key={category.id}
-                className={`px-6 py-2 rounded-full transition-colors ${
+                onClick={() => setActiveCategory(category.id as ProjectCategory)}
+                className={`interactive-button px-6 py-2 rounded-full transition-colors ${
                   activeCategory === category.id
                     ? 'red-maroon-gradient text-white'
                     : 'bg-gray-200 dark:bg-pureBlack text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-700'
                 }`}
-                onClick={() => setActiveCategory(category.id as ProjectCategory)}
-                whileHover={{ y: -3 }}
-                whileTap={{ scale: 0.95 }}
               >
                 {category.name}
               </motion.button>
@@ -196,7 +195,10 @@ const ProjectsSection: React.FC = () => {
 
         <motion.div 
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto"
-          variants={containerVariants}
+          variants={tier === 'minimal' ? {
+            hidden: { opacity: 0 },
+            visible: { opacity: 1 }
+          } : containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
@@ -207,17 +209,17 @@ const ProjectsSection: React.FC = () => {
                 key={project.id}
                 variants={itemVariants}
                 layout
-                initial={{ opacity: 0, scale: 0.8 }}
+                initial={{ opacity: 0, scale: tier === 'full' ? 0.96 : 1 }}
                 animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.8 }}
-                transition={{ duration: 0.5 }}
+                exit={{ opacity: 0, scale: tier === 'full' ? 0.96 : 1 }}
+                transition={{ duration: tier === 'full' ? 0.4 : tier === 'balanced' ? 0.25 : 0.12 }}
               >
                 <GlassCard className="h-full flex flex-col overflow-hidden">
                   <div className="overflow-hidden h-48 mb-4 rounded-lg flex items-center justify-center bg-gray-100 dark:bg-pureBlack">
                     <img 
                       src={project.image} 
                       alt={project.title} 
-                      className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                      className="project-image w-full h-full object-cover transition-transform duration-500"
                     />
                   </div>
                   <h3 className="text-xl font-bold mb-2 text-secondary dark:text-white">{project.title}</h3>
@@ -226,7 +228,7 @@ const ProjectsSection: React.FC = () => {
                     href={project.link} 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="gradient-text flex items-center gap-2 font-medium hover:underline mt-auto"
+                    className="animated-link gradient-text flex items-center gap-2 font-medium hover:underline mt-auto"
                   >
                     View Project <Icon icon={FiExternalLink} />
                   </a>

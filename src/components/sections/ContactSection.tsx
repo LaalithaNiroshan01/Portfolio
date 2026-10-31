@@ -3,8 +3,13 @@ import { motion } from 'framer-motion';
 import { FiMail, FiPhone, FiMapPin, FiSend } from 'react-icons/fi';
 import GlassCard from '../ui/GlassCard';
 import { Icon } from '../../utils/IconWrapper';
+import { useMotionPreferences } from '../../context/MotionPreferencesContext';
+import { getRevealMotionProps } from '../../utils/motionPresets';
 
 const ContactSection: React.FC = () => {
+  const { tier } = useMotionPreferences();
+  const revealProps = getRevealMotionProps(tier);
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -61,10 +66,7 @@ const ContactSection: React.FC = () => {
       <div className="container mx-auto px-4">
         <motion.div 
           className="text-center mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          {...revealProps}
         >
           <h2 className="section-title">Get In Touch</h2>
           <div className="h-1 w-24 bg-primary mx-auto mb-8"></div>
@@ -77,13 +79,10 @@ const ContactSection: React.FC = () => {
           {contactInfo.map((info, index) => (
             <motion.div 
               key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
+              {...getRevealMotionProps(tier, index * 0.08)}
             >
               <GlassCard className="h-full flex flex-col items-center text-center">
-                <div className="w-16 h-16 rounded-full bg-primary bg-opacity-10 flex items-center justify-center text-primary mb-6">
+                <div className="interactive-card-icon w-16 h-16 rounded-full bg-primary bg-opacity-10 flex items-center justify-center text-primary mb-6">
                   {info.icon}
                 </div>
                 <h3 className="text-xl font-bold mb-2 text-secondary dark:text-white">{info.title}</h3>
@@ -91,7 +90,7 @@ const ContactSection: React.FC = () => {
                   href={info.link} 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"
+                  className="animated-link text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"
                 >
                   {info.details}
                 </a>

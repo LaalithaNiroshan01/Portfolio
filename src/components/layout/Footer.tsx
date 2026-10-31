@@ -14,7 +14,7 @@ const Footer: React.FC = () => {
           <div>
             <h3 className="text-2xl font-bold text-primary mb-4">Laalitha Niroshan</h3>
             <p className="mb-4 text-gray-300">
-              UI/UX Designer & Software Engineering Undergraduate passionate about creating engaging and user-friendly interfaces.
+              UI/UX Designer & Software Engineering Graduate passionate about creating engaging and user-friendly interfaces.
             </p>
             <motion.a 
               href="#contact" 
@@ -35,6 +35,12 @@ const Footer: React.FC = () => {
               </li>
               <li>
                 <a href="#about" className="text-gray-300 hover:text-primary transition-colors">About Me</a>
+              </li>
+              <li>
+                <a href="#education" className="text-gray-300 hover:text-primary transition-colors">Education</a>
+              </li>
+              <li>
+                <a href="#research" className="text-gray-300 hover:text-primary transition-colors">Research &amp; Publications</a>
               </li>
               <li>
                 <a href="#skills" className="text-gray-300 hover:text-primary transition-colors">Skills</a>

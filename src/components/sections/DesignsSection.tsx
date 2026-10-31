@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import GlassCard from '../ui/GlassCard';
+import { useMotionPreferences } from '../../context/MotionPreferencesContext';
+import { getRevealMotionProps } from '../../utils/motionPresets';
 
 // Import design images
 // GIFs
@@ -30,6 +32,8 @@ interface Design {
 
 const DesignsSection: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<DesignCategory>('all');
+  const { tier } = useMotionPreferences();
+  const revealProps = getRevealMotionProps(tier);
 
   const designs: Design[] = [
     // GIFs
@@ -136,10 +140,7 @@ const DesignsSection: React.FC = () => {
       <div className="container mx-auto px-4">
         <motion.div 
           className="text-center mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          {...revealProps}
         >
           <h2 className="section-title">My Designs</h2>
           <div className="h-1 w-24 red-maroon-gradient mx-auto mb-8"></div>
@@ -151,14 +152,12 @@ const DesignsSection: React.FC = () => {
             {categories.map(category => (
               <motion.button
                 key={category.id}
-                className={`px-6 py-2 rounded-full transition-colors ${
+                onClick={() => setActiveCategory(category.id as DesignCategory)}
+                className={`interactive-button px-6 py-2 rounded-full transition-colors ${
                   activeCategory === category.id
                     ? 'red-maroon-gradient text-white'
                     : 'bg-gray-200 dark:bg-pureBlack text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-700'
                 }`}
-                onClick={() => setActiveCategory(category.id as DesignCategory)}
-                whileHover={{ y: -3 }}
-                whileTap={{ scale: 0.95 }}
               >
                 {category.name}
               </motion.button>
@@ -168,7 +167,10 @@ const DesignsSection: React.FC = () => {
 
         <motion.div 
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto"
-          variants={containerVariants}
+          variants={tier === 'minimal' ? {
+            hidden: { opacity: 0 },
+            visible: { opacity: 1 }
+          } : containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
@@ -179,17 +181,17 @@ const DesignsSection: React.FC = () => {
                 key={design.id}
                 variants={itemVariants}
                 layout
-                initial={{ opacity: 0, scale: 0.8 }}
+                initial={{ opacity: 0, scale: tier === 'full' ? 0.96 : 1 }}
                 animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.8 }}
-                transition={{ duration: 0.5 }}
+                exit={{ opacity: 0, scale: tier === 'full' ? 0.96 : 1 }}
+                transition={{ duration: tier === 'full' ? 0.4 : tier === 'balanced' ? 0.25 : 0.12 }}
               >
                 <GlassCard className="h-full flex flex-col overflow-hidden">
                   <div className="overflow-hidden h-64 mb-4 rounded-lg flex items-center justify-center bg-gray-100 dark:bg-pureBlack">
                     <img 
                       src={design.image} 
                       alt={design.title} 
-                      className="max-w-full max-h-full object-contain transition-transform duration-500 hover:scale-110"
+                      className="design-image max-w-full max-h-full object-contain transition-transform duration-500"
                     />
                   </div>
                   <h3 className="text-xl font-bold mb-2 text-secondary dark:text-white">{design.title}</h3>

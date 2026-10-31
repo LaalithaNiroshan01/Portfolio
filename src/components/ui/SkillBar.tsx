@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useMotionPreferences } from '../../context/MotionPreferencesContext';
 
 interface SkillBarProps {
   name: string;
@@ -7,6 +8,8 @@ interface SkillBarProps {
 }
 
 const SkillBar: React.FC<SkillBarProps> = ({ name, percentage }) => {
+  const { tier } = useMotionPreferences();
+
   return (
     <div className="mb-6">
       <div className="flex justify-between mb-1">
@@ -18,7 +21,10 @@ const SkillBar: React.FC<SkillBarProps> = ({ name, percentage }) => {
           className="red-maroon-gradient h-full rounded-full"
           initial={{ width: 0 }}
           animate={{ width: `${percentage}%` }}
-          transition={{ duration: 1, delay: 0.2 }}
+          transition={{
+            duration: tier === 'full' ? 1 : tier === 'balanced' ? 0.55 : 0.2,
+            delay: tier === 'full' ? 0.2 : 0
+          }}
         />
       </div>
     </div>

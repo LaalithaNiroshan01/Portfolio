@@ -67,18 +67,20 @@ const Navbar: React.FC = () => {
           className="hidden md:flex items-center space-x-8"
           variants={itemVariants}
         >
-          <a href="#home" className="text-secondary dark:text-white hover:text-primary dark:hover:text-primary transition-colors">Home</a>
-          <a href="#about" className="text-secondary dark:text-white hover:text-primary dark:hover:text-primary transition-colors">About Me</a>
-          <a href="#skills" className="text-secondary dark:text-white hover:text-primary dark:hover:text-primary transition-colors">Skills</a>
-          <a href="#projects" className="text-secondary dark:text-white hover:text-primary dark:hover:text-primary transition-colors">Projects</a>
-          <a href="#designs" className="text-secondary dark:text-white hover:text-primary dark:hover:text-primary transition-colors">Designs</a>
-          <a href="#contact" className="text-secondary dark:text-white hover:text-primary dark:hover:text-primary transition-colors">Contact</a>
+          <a href="#home" className="nav-link text-secondary dark:text-white hover:text-primary dark:hover:text-primary transition-colors">Home</a>
+          <a href="#about" className="nav-link text-secondary dark:text-white hover:text-primary dark:hover:text-primary transition-colors">About Me</a>
+          <a href="#education" className="nav-link text-secondary dark:text-white hover:text-primary dark:hover:text-primary transition-colors">Education</a>
+          <a href="#research" className="nav-link text-secondary dark:text-white hover:text-primary dark:hover:text-primary transition-colors">Research</a>
+          <a href="#skills" className="nav-link text-secondary dark:text-white hover:text-primary dark:hover:text-primary transition-colors">Skills</a>
+          <a href="#projects" className="nav-link text-secondary dark:text-white hover:text-primary dark:hover:text-primary transition-colors">Projects</a>
+          <a href="#designs" className="nav-link text-secondary dark:text-white hover:text-primary dark:hover:text-primary transition-colors">Designs</a>
+          <a href="#contact" className="nav-link text-secondary dark:text-white hover:text-primary dark:hover:text-primary transition-colors">Contact</a>
           
           <motion.button
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
             onClick={toggleTheme}
-            className="p-2 rounded-full bg-gray-100 dark:bg-pureBlack"
+            className="interactive-button p-2 rounded-full bg-gray-100 dark:bg-pureBlack"
           >
             {theme === 'dark' 
               ? <Icon icon={FiSun} className="text-yellow-400" /> 
@@ -92,7 +94,7 @@ const Navbar: React.FC = () => {
           <motion.button
             whileTap={{ scale: 0.95 }}
             onClick={toggleTheme}
-            className="p-2 mr-2 rounded-full bg-gray-100 dark:bg-pureBlack"
+            className="interactive-button p-2 mr-2 rounded-full bg-gray-100 dark:bg-pureBlack"
           >
             {theme === 'dark' 
               ? <Icon icon={FiSun} className="text-yellow-400" /> 
@@ -103,7 +105,7 @@ const Navbar: React.FC = () => {
           <motion.button
             whileTap={{ scale: 0.95 }}
             onClick={toggleMenu}
-            className="p-2 rounded-full bg-gray-100 dark:bg-pureBlack"
+            className="interactive-button p-2 rounded-full bg-gray-100 dark:bg-pureBlack"
           >
             {isMenuOpen 
               ? <Icon icon={FiX} className="text-primary" /> 
@@ -125,6 +127,8 @@ const Navbar: React.FC = () => {
           <div className="container mx-auto px-4 py-4 flex flex-col space-y-4">
             <a href="#home" className="text-secondary dark:text-white hover:text-primary dark:hover:text-primary px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" onClick={toggleMenu}>Home</a>
             <a href="#about" className="text-secondary dark:text-white hover:text-primary dark:hover:text-primary px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" onClick={toggleMenu}>About Me</a>
+            <a href="#education" className="text-secondary dark:text-white hover:text-primary dark:hover:text-primary px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" onClick={toggleMenu}>Education</a>
+            <a href="#research" className="text-secondary dark:text-white hover:text-primary dark:hover:text-primary px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" onClick={toggleMenu}>Research</a>
             <a href="#skills" className="text-secondary dark:text-white hover:text-primary dark:hover:text-primary px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" onClick={toggleMenu}>Skills</a>
             <a href="#projects" className="text-secondary dark:text-white hover:text-primary dark:hover:text-primary px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" onClick={toggleMenu}>Projects</a>
             <a href="#designs" className="text-secondary dark:text-white hover:text-primary dark:hover:text-primary px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" onClick={toggleMenu}>Designs</a>
